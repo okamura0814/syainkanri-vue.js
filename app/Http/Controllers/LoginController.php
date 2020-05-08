@@ -21,14 +21,14 @@ class LoginController extends Controller
   public function login(Request $request){
     // バリデーション処理
     $post = $request->validate([
-      'id' => 'required|integer',
+      'yuuzaamei' => 'required',
       'pasu' => 'required'
     ]);
 
-    $post_id = $post['id'];
+    $post_yuuzaamei = $post['yuuzaamei'];
     $post_pasu = $post['pasu'];
 
-    $syain = Syain::where('id',$post_id)->where('pasu',$post_pasu)->first();
+    $syain = Syain::where('yuuzaamei',$post_yuuzaamei)->where('pasu',$post_pasu)->first();
     // var_dump($syain);die;
 
     if($syain['yuuzaamei']){
@@ -36,8 +36,7 @@ class LoginController extends Controller
       session()->put(['login'=> 1]);
       session()->put(['yuuzaamei'=> $syain['yuuzaamei']]);
       session()->put(['syainjouhou'=> $syain]);
-      
-      // vueでログインしてない場合に判別するために作ったクッキー（断念）
+
       setcookie("login", 1,+62000);
 
       // session_start();

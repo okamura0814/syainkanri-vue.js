@@ -13,8 +13,8 @@
         <form method='post' action="{{route('login')}}">
           <div class='inputs'>
             <div>
-              <p>社員番号</p>
-              <input type='text' name='id'>
+              <p>ユーザー名</p>
+              <input type='text' name='yuuzaamei'>
             </div>
             <div>
               <p>パスワード</p>
@@ -23,6 +23,14 @@
           </div>
           <div class='btn'>
             <input type='submit' value='ログイン' />
+          </div>
+          {{ csrf_field() }}
+        </form>
+        <form method="post" action="{{route('login')}}">
+          <input type="hidden" name="yuuzaamei" value="okamura">
+          <input type="hidden" name="pasu" value="pasu">
+          <div class="btn">
+            <input type="submit" value="簡単ログイン" />
           </div>
           {{ csrf_field() }}
         </form>

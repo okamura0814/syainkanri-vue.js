@@ -99,10 +99,11 @@ class SyainsController extends Controller
       // Cookieも消す
       setcookie(session_name(),'',time()-42000,'/');
     }
-    // vueでログインしてない場合に判別するために作ったクッキー（断念）
+
     // if(isset($_COOKIE["login"])){
     //   setcookie('login','',time()-42000,'/');
     // }
+
     // これではセッションは消せるけどCookieは消せない
     session_destroy();
 
